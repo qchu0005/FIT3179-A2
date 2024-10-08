@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-A2/refs/heads/main/data/life_expectancy.csv"
+  },
+  "transform": [
+    
+    {
+      "filter": "datum.FactValueNumeric !== null && datum.FactValueNumeric !== 'NaN' && datum.FactValueNumeric!== ''"
+    }
+
+  ],
+   "mark": {
+    "type": "boxplot",
+    "size": 60  
+  },
+  "encoding": {
+    "x": {
+      "field": "Dim1", 
+      "type": "nominal",
+      "title": "Gender"
+    },
+    "y": {
+      "field": "FactValueNumeric", 
+      "type": "quantitative",
+      "title": "Life Expectancy"
+    },
+    "color": {
+      "field": "Dim1",
+      "type": "nominal",
+       "title": "Gender",
+      "scale": {
+        "domain": ["Female", "Male", "Both sexes"]
+      }
+    },
+    "tooltip": [
+      {"field": "Dim1", "type": "nominal"},
+      {"field": "FactValueNumeric", "type": "quantitative"}
+    ]
+  },
+  "title": "Box Plot of Life Expectancy by Gender (2012-2022)",
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    }
+  },
+  "width": 300,   
+  "height": 400
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 10 Visualisations</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+<body>
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>W10 Visualisations</h1>
+        <p>We can understand the relationship between the population and death rates in Malaysia based on the visualisations below.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="mapvis" class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="statechartvis" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+  
+  <script type="text/javascript">
+
+    var statechartvis = "./w10-visualization.json";
+     // Second Visualisation: Death Rates Map (Week 9 Homework)
+     var mapvis =  {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Death Rates in Malaysia per 100,000 people (2022)",
+  "width": 500,
+  "height": 400,
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-W9/refs/heads/main/data/ne_10m_admin_1_states_provinces.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_admin_1_states_provinces"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-W9/refs/heads/main/data/death_state_2022.csv"
+            },
+            "key": "state",
+            "fields": ["abs"]
+          }
+        },
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-W9/refs/heads/main/data/population_cleaned.csv"
+            },
+            "key": "state",
+            "fields": ["population"]
+          }
+        },
+        {
+          "calculate": "(datum.abs / datum.population) * 100000",
+          "as": "Deaths per 100,000 population"
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "encoding": {
+        "color": {
+          "field": "Deaths per 100,000 population",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [500000, 650000, 750000, 850000],
+            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+          }
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State"},
+          {"field": "Deaths per 100,000 population", "type": "quantitative", "title": "Deaths (per 100,000)"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "geoshape", "stroke": "lightgray", "strokeWidth": 0.5},
+      "data": {
+        "graticule": {"step": [2, 2], "extent": [[119.5, 9.8], [99.5, 0]]}
+      }
+    },
+    {
+      "mark": {"type": "circle", "color": "blue", "size": 50},
+      "data": {
+        "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-W9/refs/heads/main/data/ne_10m_populated_places.json",
+        "format": {"type": "topojson", "feature": "ne_10m_populated_places"}
+      },
+      "encoding": {
+        "longitude": {"field": "properties.LONGITUDE", "type": "quantitative"},
+        "latitude": {"field": "properties.LATITUDE", "type": "quantitative"},
+        "tooltip": [
+          {
+            "field": "properties.NAME_ID",
+            "type": "nominal",
+            "title": "Populated Place"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {}
+};
+
+    // Embed the first visualization (Map)
+    vegaEmbed('#mapvis', mapvis).then(function(result) {
+      console.log("Map visualization successfully embedded.");
+    }).catch(console.error);
+
+    // Embed the second visualization (Population Pyramid)
+    vegaEmbed('#statechartvis', statechartvis).then(function(result) {
+      console.log("Population pyramid successfully embedded.");
+    }).catch(console.error);
+  </script>
+</body>
+</html>

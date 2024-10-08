@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-A2/refs/heads/main/data/malaysia_death_change.csv"
+  },
+  "transform": [
+    {
+      "filter": "(year(datum.date) >= 2011 && year(datum.date) <= 2021)"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar", "color": "steelblue", 
+        "tooltip": true,
+        "size": 15
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "title": "Year"
+        },
+        "y": {
+          "field": "deaths_per_1000_people",
+          "type": "quantitative",
+          "title": "Total Deaths"
+        },
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Year"},
+          {"field": "deaths_per_1000_people", "type": "quantitative", "title": "Total Deaths"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "color": "red"
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {
+          "field": "annual_change",
+          "type": "quantitative",
+          "title": "Annual % Change",
+          "axis": {"orient": "right"}
+        },
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Year"},
+          {"field": "annual_change", "type": "quantitative", "title": "Annual % Change"}
+        ]
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {"y": "independent"}
+  },
+  "title": "Total Deaths and Annual % Change in Deaths (2012-2022)",
+  "width": 400,
+  "height": 400,
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
+    }
+  }
+}

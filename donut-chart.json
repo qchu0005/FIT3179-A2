@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-A2/refs/heads/main/data/causes_of_death.csv"
+  },
+  "transform": [
+    {
+      "filter": {
+        "not": {
+          "or": [
+            {"field": "Cause of Death", "equal": "Codes for special purposes"},
+            {"field": "Cause of Death", "equal": "Certain conditions originating in the perinatal period"}
+          ]
+        }
+      }
+    },
+    {
+      "aggregate": [{"op": "sum", "field": "Percentage", "as": "Percentage"}],
+      "groupby": ["Cause of Death"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50,
+        "outerRadius": 100
+      },
+      "encoding": {
+        "theta": {
+          "field": "Percentage",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "Cause of Death",
+          "type": "nominal",
+          "legend": {
+            "labelFontSize": 10,
+            "titleFontSize": 12
+          }
+        },
+        "tooltip": [
+          {"field": "Cause of Death", "type": "nominal"},
+          {"field": "Percentage", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 10,
+        "color": "black"
+      },
+      "encoding": {
+        "text": {"value": "Total Deaths: 131,687"}
+      },
+      "transform": [
+        {
+          "calculate": "datum.Percentage",
+          "as": "text_value"
+        }
+      ]
+    }
+  ],
+  "view": {
+    "stroke": null
+  },
+  "title": "Donut Chart of Principal Causes of Death in Hospitals (2022)"
+}

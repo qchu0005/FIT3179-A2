@@ -86,14 +86,6 @@
   "transform": [
     {
       "filter": "datum.date === '2022-01-01'"
-    },
-    {
-      "calculate": "datum.ethnicity === 'bumi_malay' ? 'Bumi (Malay)' : datum.ethnicity === 'bumi_other' ? 'Bumi (others)' : datum.ethnicity === 'chinese' ? 'Chinese' : datum.ethnicity === 'indian' ? 'Indian' : datum.ethnicity === 'other_citizen' ? 'Other Citizen' : datum.ethnicity === 'other_noncitizen' ? 'Other Noncitizen' : datum.ethnicity === 'overall' ? 'Overall' : datum.ethnicity",
-      "as": "Formatted_Ethnicity"
-    },
-    {
-      "calculate": "datum.sex === 'both' ? 'Both' : datum.sex=== 'female' ? 'Female' : datum.sex === 'male' ? 'Male' : datum.sex",
-      "as": "format_sex"
     }
   ],
   "mark": "rect",
@@ -120,14 +112,12 @@
   },
   "config": {
     "axis": {
-      "grid": true,
-      "tickBand": "extent",
-      "labelAngle": -45
+      "grid": true
     }
   },
   "title": "Heatmap of Death Rates by Sex and Ethnicity (2022)",
-  "width": 500,   
-  "height": 500
+  "width": 200,   
+  "height": 100
 }
 
 

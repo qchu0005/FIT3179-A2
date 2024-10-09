@@ -41,6 +41,7 @@
   "config": {
     "axis": {
       "grid": true,
+      "tickBand": "extent",
       "labelAngle": -45
     }
   },

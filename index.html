@@ -78,7 +78,57 @@
       var barlinechart = "./bar_line_chart.json";
 
        // Bar-Line Chart
-       var heatmap = "./heatmap.json";
+       var heatmap = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-A2/refs/heads/main/data/death_sex_ethnic.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.date === '2022-01-01'"
+    },
+    {
+      "calculate": "datum.ethnicity === 'bumi_malay' ? 'Bumi (Malay)' : datum.ethnicity === 'bumi_other' ? 'Bumi (others)' : datum.ethnicity === 'chinese' ? 'Chinese' : datum.ethnicity === 'indian' ? 'Indian' : datum.ethnicity === 'other_citizen' ? 'Other Citizen' : datum.ethnicity === 'other_noncitizen' ? 'Other Noncitizen' : datum.ethnicity === 'overall' ? 'Overall' : datum.ethnicity",
+      "as": "Formatted_Ethnicity"
+    },
+    {
+      "calculate": "datum.sex === 'both' ? 'Both' : datum.sex=== 'female' ? 'Female' : datum.sex === 'male' ? 'Male' : datum.sex",
+      "as": "format_sex"
+    }
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x": {
+      "field": "Formatted_Ethnicity", 
+      "type": "nominal",
+      "title": "Ethnicity"
+    },
+    "y": {
+      "field": "format_sex", 
+      "type": "nominal",
+      "title": "Sex", 
+      "scale": {
+        "domain": ["Both", "Female", "Male"]
+      }
+
+    },
+    "color": {
+      "field": "abs", 
+      "type": "quantitative",
+      "title": "Death Rate"
+    }
+  },
+  "config": {
+    "axis": {
+      "grid": true,
+      "tickBand": "extent",
+      "labelAngle": -45
+    }
+  },
+  "title": "Heatmap of Death Rates by Sex and Ethnicity (2022)",
+  "width": 500,   
+  "height": 500
+}
 
 
 

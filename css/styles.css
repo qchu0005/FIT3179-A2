@@ -17,3 +17,29 @@ body *{
 .pure-g {
   margin-bottom: 40px;
 }
+
+
+/* Specific visualization adjustments */
+#donutchart, #barlinechart {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#boxplot{
+    display: inline-block;
+    width: 48%;
+}
+
+/* Make sure charts take up appropriate space
+#mapvis, #statechartvis, #donutchart, #boxplot, #heatmap, #barlinechart {
+    height: 400px;
+} */
+
+/* Ensures that the donut chart is horizontally centered */
+#donutchart {
+    width: 50%;
+}
+
+#barlinechart {
+    width: 100%;
+}

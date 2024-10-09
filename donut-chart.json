@@ -67,5 +67,6 @@
   "view": {
     "stroke": null
   },
-  "title": "Donut Chart of Principal Causes of Death in Hospitals (2022)"
+  "title": "Donut Chart of Principal Causes of Death in Hospitals (2022)",  
+  "height": 400
 }

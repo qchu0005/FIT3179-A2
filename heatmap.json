@@ -41,10 +41,10 @@
   "config": {
     "axis": {
       "grid": true,
-      "tickBand": "extent"
+      "labelAngle": -45
     }
   },
   "title": "Heatmap of Death Rates by Sex and Ethnicity (2022)",
   "width": 300,   
-  "height": 500
+  "height": 600
 }

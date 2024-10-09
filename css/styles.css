@@ -19,10 +19,3 @@ body *{
   margin-left: auto;
   margin-right: auto;
 }
-
-.pure-u-2-2{
-
-  width: 100%; /* Ensure it takes full width */
-  margin: 0 auto; /* This centers the element horizontally */
-
-}

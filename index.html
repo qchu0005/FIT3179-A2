@@ -45,21 +45,56 @@
     </div>
     <!-- end pure grid group -->
 
+
+    <div class="pure-g"></div>
+      <div class="pure-u-1-1">
+        <p>
+          Death rates are a crucial indicator of public health, influenced by a variety of factors including population demographics. 
+          In Malaysia, these rates vary significantly across different states and regions, providing a window into the broader challenges faced by the population. 
+      </p>
+     </div>
+    </div>
+    
+
     <!-- Additional Visualizations -->
     <div class="pure-g">
       <div class="pure-u-1-2">
         <div id="donutchart" class="vis-container"></div>
       </div>
+      <div class="pure-u-1-2"></div>
+      <div id="heatmap" class="vis-container"></div>
+    </div>
+
+
+    <div class="pure-g"></div>
+      <div class="pure-u-1-1">
+        <p>
+          We also dive deeper into specific causes of death, using a donut chart to reveal the most common causes in recent years.
+          Providing a closer examination of how certain diseases and external factors contribute to overall mortality.
+         </p>
+     </div>
+    </div>
+
+   
       <div class="pure-u-1-2">
         <div id="boxplot" class="vis-container"></div>
       </div>
-      <div class="pure-u-1-2"></div>
-        <div id="heatmap" class="vis-container"></div>
-      </div>
+
+
+ 
       <div class="pure-u-1-2">
         <div id="barlinechart" class="vis-container"></div>
       </div>
     </div>
+
+    <div class="pure-g"></div>
+      <div class="pure-u-1-1">
+        <p>
+     This provides a dual perspective, showing both the raw number of deaths and the rate of deaths over time for key causes, helping to track changes in mortality and identify emerging health threats. 
+    </p>
+     </div>
+    </div>
+    
     
     <!-- end pure grid group -->
   
@@ -78,47 +113,7 @@
       var barlinechart = "./bar_line_chart.json";
 
        // Bar-Line Chart
-       var heatmap = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {
-    "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-A2/refs/heads/main/data/death_sex_ethnic.csv"
-  },
-  "transform": [
-    {
-      "filter": "datum.date === '2022-01-01'"
-    }
-  ],
-  "mark": "rect",
-  "encoding": {
-    "x": {
-      "field": "Formatted_Ethnicity", 
-      "type": "nominal",
-      "title": "Ethnicity"
-    },
-    "y": {
-      "field": "format_sex", 
-      "type": "nominal",
-      "title": "Sex", 
-      "scale": {
-        "domain": ["Both", "Female", "Male"]
-      }
-
-    },
-    "color": {
-      "field": "abs", 
-      "type": "quantitative",
-      "title": "Death Rate"
-    }
-  },
-  "config": {
-    "axis": {
-      "grid": true
-    }
-  },
-  "title": "Heatmap of Death Rates by Sex and Ethnicity (2022)",
-  "width": 200,   
-  "height": 100
-}
+       var heatmap = "./heatmap.json";
 
 
 
@@ -234,9 +229,9 @@
       }).catch(console.error);
 
        // Embed the donut chart
-     vegaEmbed('#heatmap', heatmap).then(function(result) {
-        console.log("Heat Map successfully embedded.");
-      }).catch(console.error);
+    //  vegaEmbed('#heatmap', heatmap).then(function(result) {
+    //     console.log("Heat Map successfully embedded.");
+    //   }).catch(console.error);
 
 
 

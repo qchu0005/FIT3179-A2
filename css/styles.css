@@ -16,12 +16,13 @@ body *{
 
 .pure-g {
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pure-u-2-2{
 
   width: 100%; /* Ensure it takes full width */
-  max-width: 1200px; /* Optional: Set a max width for responsiveness */
   margin: 0 auto; /* This centers the element horizontally */
 
 }

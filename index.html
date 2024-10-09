@@ -63,6 +63,16 @@
 
     var statechartvis = "./w10-visualization.json";
      // Second Visualisation: Death Rates Map (Week 9 Homework)
+
+      // Donut Chart
+      var donutchart = "./donut-chart.json";
+
+      // Boxplot
+      var boxplot = "./boxplot.json";
+
+      // Bar-Line Chart
+      var barlinechart = "./bar_line_chart.json";
+
      var mapvis =  {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Death Rates in Malaysia per 100,000 people (2022)",
@@ -158,6 +168,22 @@
     vegaEmbed('#statechartvis', statechartvis).then(function(result) {
       console.log("Population pyramid successfully embedded.");
     }).catch(console.error);
+
+     // Embed the donut chart
+     vegaEmbed('#donutchart', donutchart).then(function(result) {
+        console.log("Donut chart successfully embedded.");
+      }).catch(console.error);
+
+      // Embed the boxplot
+      vegaEmbed('#boxplot', boxplot).then(function(result) {
+        console.log("Boxplot successfully embedded.");
+      }).catch(console.error);
+
+      // Embed the bar-line chart
+      vegaEmbed('#barlinechart', barlinechart).then(function(result) {
+        console.log("Bar-line chart successfully embedded.");
+      }).catch(console.error);
+      
   </script>
 </body>
 </html>

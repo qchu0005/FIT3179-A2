@@ -34,9 +34,22 @@
         "color": {
           "field": "Cause of Death",
           "type": "nominal",
+          "scale": {
+            
+            "range": [ "#5f5a55", 
+    "#484240",
+    "#241e1e", 
+    "#b90a00",
+    "#950c00", 
+    "#800000", 
+    "#d3d3d3", 
+    "#36454F", 
+    "#000000"  
+          ]
+          },
           "legend": {
             "labelFontSize": 10,
-            "titleFontSize": 12
+            "titleFontSize": 15
           }
         },
         "tooltip": [
@@ -67,6 +80,14 @@
   "view": {
     "stroke": null
   },
-  "title": "Donut Chart of Principal Causes of Death in Hospitals (2022)",  
-  "height": 500
+  "title": {
+    "text": "Principal Causes of Death in Hospitals (2022)",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "font": "serif"  ,
+    "align": "center",
+    "lineHeight": 3
+  },
+  "height": 400,
+  "width": 200
 }

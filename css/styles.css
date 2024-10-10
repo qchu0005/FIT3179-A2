@@ -27,7 +27,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-left: 50px;
-  align-items: center;
+  align-items: baseline;
+  display: inline;
 }
 
 p {
@@ -36,11 +37,25 @@ p {
 
 .text-container {
   width: 55%; /* Adjust width based on how much space you want for text */
-  padding-left: 20px; /* Add some spacing between the chart and the text */
   justify-content:center;
+  flex: 1; /* Allow the text container to take available space */
+  margin-right: 20px; /* Space between text and chart */
 
 }
 
 .chart-container {
   width: 40%; /* Adjust width based on how much space you want for the chart */
+  flex: 1; /* Allow the chart container to take available space */
+  display: flex;
+  justify-content: center; /* Center the chart */
+  align-items: center; /* Center vertically */
+
+
+}
+
+.container {
+  display: flex; /* Use flexbox to align items side by side */
+  justify-content: space-between; /* Space between the text and chart */
+  align-items: flex-start; /* Align items at the start of the container */
+  margin: 20px 0; /* Add some margin around the container */
 }

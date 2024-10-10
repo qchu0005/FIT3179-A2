@@ -43,6 +43,15 @@
     </div>
 
     <div class="pure-g">
+      <div class="pure-u-1-1">
+        <p>
+          However, death rates in <strong>Selangor</strong> is considered one of the <strong>lowest</strong>!
+        </p>
+      </div>
+    </div>
+    
+
+    <div class="pure-g">
       <div class="pure-u-1-2">
         <div id="mapvis" class="vis-container"></div>
       </div>
@@ -56,7 +65,7 @@
           Death rates are a crucial indicator of public health, influenced by a variety of factors including population demographics. 
           </p>
           <p>
-          In Malaysia, these rates vary significantly across different states and regions, providing a window into the broader challenges faced by the population. 
+          In Malaysia, these rates vary significantly across different states and regions, providing broader challenges faced by the population. 
       </p>
     </div>
   </div>
@@ -65,24 +74,34 @@
     <!-- Additional Visualizations -->
     <div class="pure-g">
       <div class="pure-u-1-2">
-        <div id="donutchart" class="vis-container"></div>
+        <div id="donutchart" class="chart-container"></div>
       </div>
-      <div class="pure-u-1-2">
-        <div id="barlinechart" class="vis-container"></div>
-    </div>
+      <div class="pure-u-1-1">
+        <div class="text-container">
+          <p>We also dive deeper into specific causes of deaths.</p>
+          
+          <p>
+            The leading cause of death in 2022 was <strong>circulatory diseases</strong>,
+            </p>
+            <p>
+              which is <strong style="font-size: 1.6em;">43.88%</strong> out of <strong>131,687 deaths</strong>.
+              </p>
+              <p>This is recorded by Ministry of Health Malaysia from MOH</p>
+            <p>and private hospitals. </p>
+              
+        </div>
+      </div>
+        
+     </div>
       
     </div>
 
 
     <div class="pure-g">
-      <div class="pure-u-1-1">
-        <p>
-          We also dive deeper into specific causes of death, using a donut chart to reveal the most common causes in recent years.
-          </p>
-          <p>
-          Providing a closer examination of how certain diseases and external factors contribute to the death rates from 2012 to 2022.
-      </p>
-     </div>
+      <div class="pure-u-1-2">
+        <div id="barlinechart" class="vis-container"></div>
+    </div>
+      
     </div>
 
    
@@ -133,7 +152,12 @@
 
      var mapvis =  {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Death Rates in Malaysia per 100,000 people (2022)",
+  "title": {
+    "text": "Death Rates in Malaysia per 100,000 people (2022)",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "font": "serif"  
+  },
   "width": 800,
   "height": 400,
   "projection": {"type": "mercator"},
@@ -180,7 +204,15 @@
           "scale": {
             "type": "threshold",
             "domain": [500000, 650000, 750000, 850000],
-            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+            "range": [ "#800000", // Dark Maroon
+              "#A52A2A", // Brown
+              "#CD5C5C", // Indian Red
+              "#FF6347"  // Tomato
+              ]
+          },
+          "legend": {
+            "labelFontSize": 12,    
+            "titleFontSize": 12    
           }
         },
         "tooltip": [

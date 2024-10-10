@@ -1,9 +1,12 @@
 h1 {
   font-family: "Times New Roman", Times, serif;
+  font-size: 48px; /* Increase size as needed */
+  font-weight: bold; /* Optional: Make the title bold */
+  margin-bottom: 20px; /* Optional: Add spacing after the title */
 }
 
-body *{
-      font-family: Arial, sans-serif;
+body {
+      font-family: Tahoma, sans-serif;
     }
 
 .vis-container {
@@ -11,7 +14,7 @@ body *{
   }
 
 .page {
-    width: 1400px;
+    width: 1000px;
     background-color: white;
     margin: auto;
     padding: 50px;
@@ -19,8 +22,24 @@ body *{
 }
 
 .pure-g {
+  padding-top: auto;
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 50px;
+}
+
+p {
+  line-height: 0.7; 
+}
+
+.text-container {
+  width: 55%; /* Adjust width based on how much space you want for text */
+  padding-left: 20px; /* Add some spacing between the chart and the text */
+  justify-content:center;
+
+}
+
+.chart-container {
+  width: 40%; /* Adjust width based on how much space you want for the chart */
 }

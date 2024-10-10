@@ -1,9 +1,14 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Malaysia's Population in 2022 (in '000)",
-  "width": 300,
+   "title": {
+    "text": "Malaysia's Population in 2022 (in '000)",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "font": "serif"  
+  },
+  "width": 700,
   "height": 400,
-  "description": "A population pyramid for Malaysia by states.",
+  "description": "A population lollipop chart for Malaysia by states.",
   "data": { 
     "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-W10/refs/heads/main/data/updated_population_data_state.csv",
     "format": {"type": "csv"}
@@ -21,7 +26,6 @@
         "as": "rank"
       }],
       "sort": [{"field": "population", "order": "ascending"}]  
-    
     }
   ],
   "params": [
@@ -38,47 +42,59 @@
     }
   ],
   "layer": [
-  {
-    "mark": "bar",
-    "encoding": {
-
-"x": {
-  "field": "population",
-  "type": "quantitative",
-  "title": "Population"
-},
-"y": {
-  "field": "state",
-  "type": "nominal",
-  "title": "State",
-  "sort": {
-          "field": "population", 
-          "order": "descending"  
+    {
+      "mark": {
+        "type": "bar",
+        "tooltip": null,
+        "cornerRadiusEnd": 5,  
+        "strokeWidth": 0.2     
+      },
+      "encoding": {
+        "x": {
+          "field": "population",
+          "type": "quantitative",
+          "title": "Population",
+          "axis": {
+        "titleFontSize": 14  
+      }
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "title": "State",
+          "axis": {
+        "titleFontSize": 14  
+      },
+          "sort": {
+            "field": "population", 
+            "order": "descending"  
+          }
+        },
+        "color": {
+          "condition": {
+            "test": "datum.state == 'Selangor'",
+            "value": "black" 
+          },
+          "value": "maroon" 
+        },
+        "opacity": {
+          "condition": {
+            "param": "population_selector",
+            "empty": false,
+            "value": 0.4
+          },
+          "value": 0.6
         }
-},
-"tooltip": [
-  {"field": "state", "type": "nominal", "title": "State"},
-  {"field": "population", "type": "quantitative", "title": "Population"}
-]
-}
-},
-{
-  "mark": {
-    "type": "text",
-    "align": "left",
-    "baseline": "middle",
-    "dx": 5,  
-    "fontSize": 10
-  },
-  "encoding": {
-    "text": {
-      "condition": {
-        "test": "datum.rank == 15 || datum.rank == 16",  
-        "field": "population",
-        "type": "quantitative"
       }
     },
-    "x": {
+    {
+      "mark": {
+        "type": "circle",
+        "size": 100,
+        "fill": "black" 
+      },
+      "encoding": {
+        "x": {
           "field": "population",
           "type": "quantitative"
         },
@@ -89,13 +105,77 @@
             "field": "population", 
             "order": "descending"  
           }
-  },
-  "tooltip": [
-  {"field": "state", "type": "nominal", "title": "State"},
-  {"field": "population", "type": "quantitative", "title": "Population"}
-]
-}
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "population", "type": "quantitative", "title": "Population"}
+        ]
+      }
+    },
+    {
+      "mark": {
+    "type": "text",
+    "align": "left",
+    "baseline": "line-bottom",
+    "dx": 5,  
+    "dy": -5, 
+    "fontSize": 13,  
+    "color": "black",
+    "fontWeight": "bold"
 
-}
+  },
+      "encoding": {
+        "text": {
+          "value": "Selangor has the most population"
+        },
+        "x": {
+          "field": "population",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "population", 
+            "order": "descending"
+          }
+        }
+      },
+      "transform": [
+        {
+          "filter": "datum.state == 'Selangor'"
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 5,  
+        "fontSize": 12
+      },
+      "encoding": {
+        "text": {
+          "condition": {
+            "test": "datum.rank == 15 || datum.rank == 16",  
+            "field": "population",
+            "type": "quantitative"
+          }
+        },
+        "x": {
+          "field": "population",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": {
+            "field": "population", 
+            "order": "descending"
+          }
+        }
+      }
+    }
   ]
 }

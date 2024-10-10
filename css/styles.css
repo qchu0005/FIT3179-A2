@@ -36,10 +36,11 @@ p {
 }
 
 .text-container {
-  width: 55%; /* Adjust width based on how much space you want for text */
   justify-content:center;
+  height: 250px;
   flex: 1; /* Allow the text container to take available space */
   margin-right: 20px; /* Space between text and chart */
+  padding-left: 50px;
 
 }
 
@@ -54,8 +55,9 @@ p {
 }
 
 .container {
+  height: 450px;
   display: flex; /* Use flexbox to align items side by side */
   justify-content: space-between; /* Space between the text and chart */
-  align-items: flex-start; /* Align items at the start of the container */
+  align-items: center; /* Align items at the start of the container */
   margin: 20px 0; /* Add some margin around the container */
 }

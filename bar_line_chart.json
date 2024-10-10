@@ -23,7 +23,7 @@
         "type": "bar", 
         "color": "darkred", 
         "tooltip": true,
-        "size": 15
+        "size": 20
       },
       "encoding": {
         "x": {

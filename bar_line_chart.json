@@ -3,6 +3,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-A2/refs/heads/main/data/malaysia_death_change.csv"
   },
+  
   "transform": [
     {
       "filter": "(year(datum.date) >= 2011 && year(datum.date) <= 2021)"
@@ -10,7 +11,17 @@
   ],
   "layer": [
     {
-      "mark": {"type": "bar", "color": "steelblue", 
+      "selection": {
+        "highlight": {
+          "type": "single",
+          "on": "mouseover",
+          "empty": "none",
+          "encodings": ["x"]
+        }
+      },
+      "mark": {
+        "type": "bar", 
+        "color": "darkred", 
         "tooltip": true,
         "size": 15
       },
@@ -23,26 +34,52 @@
         "y": {
           "field": "deaths_per_1000_people",
           "type": "quantitative",
-          "title": "Total Deaths"
+          "title": "Total Deaths (per 1000 people)",
+          "axis": {
+            "titleFontSize": 14
+          }
+        },
+        "color": {
+          "condition": {
+            "selection": "highlight", 
+            "value": "grey"
+          },
+          "value": "darkred"
+        },
+        "opacity": {
+          "condition": {
+            "selection": "highlight",
+            "value": 1
+          },
+          "value": 0.9
         },
         "tooltip": [
           {"field": "date", "type": "temporal", "title": "Year"},
-          {"field": "deaths_per_1000_people", "type": "quantitative", "title": "Total Deaths"}
+          {"field": "deaths_per_1000_people", "type": "quantitative", "title": "Total Deaths (per 1000)"}
         ]
       }
     },
     {
       "mark": {
         "type": "line",
-        "color": "red"
+        "color": "goldenrod"
       },
       "encoding": {
-        "x": {"field": "date", "type": "temporal"},
+        "x": {
+          "field": "date", 
+          "type": "temporal",  
+          "axis": {
+            "titleFontSize": 14
+          }
+        },
         "y": {
           "field": "annual_change",
           "type": "quantitative",
           "title": "Annual % Change",
-          "axis": {"orient": "right"}
+          "axis": {
+            "orient": "right",
+            "titleFontSize": 14
+          }
         },
         "tooltip": [
           {"field": "date", "type": "temporal", "title": "Year"},
@@ -54,8 +91,15 @@
   "resolve": {
     "scale": {"y": "independent"}
   },
-  "title": "Total Deaths and Annual % Change in Deaths (2012-2022)",
-  "width": 400,
+  "title": {
+    "text": "Total Deaths and Annual % Change in Deaths (2012-2022)",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "font": "serif",
+    "align": "center",
+    "lineHeight": 3
+  },
+  "width": 800,
   "height": 400,
   "config": {
     "axis": {

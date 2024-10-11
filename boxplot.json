@@ -1,90 +1,64 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "data": {
-    "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-A2/refs/heads/main/data/death_sex_ethnic.csv"
+    "url": "https://raw.githubusercontent.com/qchu0005/FIT3179-A2/refs/heads/main/data/life_expectancy.csv"
   },
   "transform": [
+    
     {
-      "filter": "datum.date === '2022-01-01'"
+      "filter": "datum.FactValueNumeric !== null && datum.FactValueNumeric !== 'NaN' && datum.FactValueNumeric!== ''"
     },
     {
-      "calculate": "datum.ethnicity === 'bumi_malay' ? 'Bumi (Malay)' : datum.ethnicity === 'bumi_other' ? 'Bumi (others)' : datum.ethnicity === 'chinese' ? 'Chinese' : datum.ethnicity === 'indian' ? 'Indian' : datum.ethnicity === 'other_citizen' ? 'Other Citizen' : datum.ethnicity === 'other_noncitizen' ? 'Other Noncitizen' : datum.ethnicity === 'overall' ? 'Overall' : datum.ethnicity",
-      "as": "Formatted_Ethnicity"
-    },
-    {
-      "calculate": "datum.sex === 'both' ? 'Both' : datum.sex === 'female' ? 'Female' : datum.sex === 'male' ? 'Male' : datum.sex",
-      "as": "format_sex"
-    },
-    {
-      "filter": "datum.format_sex !== 'Both' && datum.Formatted_Ethnicity !== 'Overall'"
+      "filter": "datum.Period == 2022"  
     }
+
   ],
-  "params": [{"name": "highlight", "select": "point"}],
-  "mark": "rect",
+   "mark": {
+    "type": "boxplot",
+    "extent": "min-max",
+    "size": 60  
+  },
   "encoding": {
     "x": {
-      "field": "Formatted_Ethnicity", 
+      "field": "Dim1", 
       "type": "nominal",
-      "title": "Ethnicity"
+      "title": "Gender"
     },
     "y": {
-      "field": "format_sex", 
-      "type": "nominal",
-      "title": "Sex", 
-      "scale": {
-        "domain": ["Female", "Male"]  
-      }
-    },
-    "color": {
-      "field": "abs", 
+      "field": "FactValueNumeric", 
       "type": "quantitative",
-      "title": "Death Rate",
-       "scale": {
-        "domain": [800, 1000, 5000,10000,20000, 45000, 60000], 
-          "range": ["#ffcccc", "#ff6666", "#ff0000", "#990000", "#000000"]
-      }
+      "title": "Life Expectancy"
     },
-    
-        "stroke": {
-          "condition": {
-            "param": "highlight",
-            "empty": false,
-            "value": "black"
-          },
-          "value": null
-        },
-        "opacity": {
-          "condition": {"param": "highlight", "value": 1},
-          "value": 0.5
-        },
-        "order": {
-          "condition": {"param": "highlight", "value": 1},
-          "value": 0
-        },
-     "tooltip": [
-      {
-        "field": "Formatted_Ethnicity",
-        "title": "Ethnicity"
+   "color": {
+      "field": "Dim1",
+      "type": "nominal",
+      "title": "Gender",
+      "scale": {
+        "domain": ["Female", "Male", "Both sexes"],
+        "range": ["#641e16", "black", "darkgrey"]  
       },
-      {
-        "field": "format_sex",
-        "title": "Sex"
-      },
-      {
-        "field": "abs",
-        "title": "Death Rate",
-        "format": ".2f"  
-      }
+      "legend": null
+   },
+    "tooltip": [
+      {"field": "Dim1", "type": "nominal"},
+      {"field": "FactValueNumeric", "type": "quantitative"}
     ]
+  },
+  "title": {
+    "text": "Box Plot of Life Expectancy by Gender (2022)",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "font": "serif"  ,
+    "align": "center",
+    "lineHeight": 3
   },
   "config": {
     "axis": {
-      "grid": true,
-      "tickBand": "extent",
-      "labelAngle": -45
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "titleLineHeight": 5
     }
   },
-  "title": "Heatmap of Death Rates by Sex and Ethnicity (2022)",
-  "width": 500,   
+  "width": 400,   
   "height": 400
 }

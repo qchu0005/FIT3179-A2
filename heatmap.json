@@ -12,10 +12,14 @@
       "as": "Formatted_Ethnicity"
     },
     {
-      "calculate": "datum.sex === 'both' ? 'Both' : datum.sex=== 'female' ? 'Female' : datum.sex === 'male' ? 'Male' : datum.sex",
+      "calculate": "datum.sex === 'both' ? 'Both' : datum.sex === 'female' ? 'Female' : datum.sex === 'male' ? 'Male' : datum.sex",
       "as": "format_sex"
+    },
+    {
+      "filter": "datum.format_sex !== 'Both' && datum.Formatted_Ethnicity !== 'Overall'"
     }
   ],
+  "params": [{"name": "highlight", "select": "point"}],
   "mark": "rect",
   "encoding": {
     "x": {
@@ -28,15 +32,50 @@
       "type": "nominal",
       "title": "Sex", 
       "scale": {
-        "domain": ["Both", "Female", "Male"]
+        "domain": ["Female", "Male"]  
       }
-
     },
     "color": {
       "field": "abs", 
       "type": "quantitative",
-      "title": "Death Rate"
-    }
+      "title": "Death Rate",
+       "scale": {
+        "domain": [800, 1000, 5000,10000,20000, 45000, 60000], 
+          "range": ["#ffcccc", "#ff6666", "#ff0000", "#990000", "#000000"]
+      }
+    },
+    
+        "stroke": {
+          "condition": {
+            "param": "highlight",
+            "empty": false,
+            "value": "black"
+          },
+          "value": null
+        },
+        "opacity": {
+          "condition": {"param": "highlight", "value": 1},
+          "value": 0.5
+        },
+        "order": {
+          "condition": {"param": "highlight", "value": 1},
+          "value": 0
+        },
+     "tooltip": [
+      {
+        "field": "Formatted_Ethnicity",
+        "title": "Ethnicity"
+      },
+      {
+        "field": "format_sex",
+        "title": "Sex"
+      },
+      {
+        "field": "abs",
+        "title": "Death Rate",
+        "format": ".2f"  
+      }
+    ]
   },
   "config": {
     "axis": {
@@ -45,7 +84,14 @@
       "labelAngle": -45
     }
   },
-  "title": "Heatmap of Death Rates by Sex and Ethnicity (2022)",
-  "width": 300,   
+  "title": {
+    "text": "Heatmap of Death Rates by Sex and Ethnicity (2022)",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "font": "serif"  ,
+    "align": "center",
+    "lineHeight": 3
+  },
+  "width": 500,   
   "height": 400
 }

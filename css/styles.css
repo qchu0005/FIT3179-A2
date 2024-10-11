@@ -35,6 +35,10 @@ p {
   line-height: 0.7; 
 }
 
+li{
+  line-height: 1.3;
+}
+
 .text-container {
   justify-content:center;
   height: 250px;
@@ -44,7 +48,26 @@ p {
 
 }
 
+.text-container-2 {
+  justify-content:center;
+  height: 250px;
+  flex: 1; /* Allow the text container to take available space */
+  margin-left: 20px; /* Space between text and chart */
+  padding-left: 50px;
+
+}
+
 .chart-container {
+  width: 40%; /* Adjust width based on how much space you want for the chart */
+  flex: 1; /* Allow the chart container to take available space */
+  display: flex;
+  justify-content: center; /* Center the chart */
+  align-items: self-start; /* Center vertically */
+
+
+}
+
+.chart-container-2 {
   width: 40%; /* Adjust width based on how much space you want for the chart */
   flex: 1; /* Allow the chart container to take available space */
   display: flex;

@@ -55,12 +55,9 @@ p {
 }
 
 .container {
-  height: 250px;
   display: flex; /* Use flexbox to align items side by side */
   justify-content: space-between; /* Space between the text and chart */
-  align-items: center; /* Align items at the start of the container */
-  /* margin-bottom: 20px 0; Add some margin around the container */
-  margin-left: 20px 0; /* Add some margin around the container */
-  margin-right: 20px 0; /* Add some margin around the container */
+  align-items: self-start; /* Align items at the start of the container */
+  margin-top: 20px;
 }
 

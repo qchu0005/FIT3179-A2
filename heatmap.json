@@ -81,7 +81,13 @@
     "axis": {
       "grid": true,
       "tickBand": "extent",
-      "labelAngle": -45
+      "labelAngle": -45,
+      "labelFontSize": 12,
+      "titleFontSize":16
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 14
     }
   },
   "title": {

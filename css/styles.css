@@ -52,7 +52,7 @@ li{
   justify-content:center;
   height: 250px;
   flex: 1; /* Allow the text container to take available space */
-  margin-left: 20px; /* Space between text and chart */
+  margin-right: 40px; /* Space between text and chart */
   padding-left: 50px;
 
 }
@@ -82,5 +82,12 @@ li{
   justify-content: space-between; /* Space between the text and chart */
   align-items: self-start; /* Align items at the start of the container */
   margin-top: 20px;
+}
+
+.container-2 {
+  display: flex; /* Use flexbox to align items side by side */
+  justify-content: space-between; /* Space between the text and chart */
+  align-items: center; /* Align items at the start of the container */
+  margin-bottom: 20px;
 }
 

@@ -91,3 +91,15 @@ li{
   margin-bottom: 20px;
 }
 
+.data-sources {
+  text-align: center; /* Center the text */
+  font-size: 14px;    /* Make text smaller */
+  margin: 20px 0;     /* Add some spacing around the section */
+}
+
+.data-sources ul {
+  list-style-type: none; /* Remove bullets from the list */
+  padding: 0;           /* Remove default padding */
+}
+
+

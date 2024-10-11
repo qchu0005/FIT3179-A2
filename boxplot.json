@@ -19,6 +19,7 @@
       "filter": "datum.format_sex !== 'Both' && datum.Formatted_Ethnicity !== 'Overall'"
     }
   ],
+  "params": [{"name": "highlight", "select": "point"}],
   "mark": "rect",
   "encoding": {
     "x": {
@@ -39,10 +40,27 @@
       "type": "quantitative",
       "title": "Death Rate",
        "scale": {
-        "domain": [800, 1000, 5000,10000,30000, 45000, 60000], 
+        "domain": [800, 1000, 5000,10000,20000, 45000, 60000], 
           "range": ["#ffcccc", "#ff6666", "#ff0000", "#990000", "#000000"]
       }
     },
+    
+        "stroke": {
+          "condition": {
+            "param": "highlight",
+            "empty": false,
+            "value": "black"
+          },
+          "value": null
+        },
+        "opacity": {
+          "condition": {"param": "highlight", "value": 1},
+          "value": 0.5
+        },
+        "order": {
+          "condition": {"param": "highlight", "value": 1},
+          "value": 0
+        },
      "tooltip": [
       {
         "field": "Formatted_Ethnicity",

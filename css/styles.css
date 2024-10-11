@@ -55,7 +55,7 @@ p {
 }
 
 .container {
-  height: 450px;
+  height: 400px;
   display: flex; /* Use flexbox to align items side by side */
   justify-content: space-between; /* Space between the text and chart */
   align-items: center; /* Align items at the start of the container */

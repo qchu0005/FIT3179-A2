@@ -99,5 +99,6 @@
     "lineHeight": 3
   },
   "width": 800,   
-  "height": 400
+  "height": 400,
+  "background": "#e3ecf8"
 }

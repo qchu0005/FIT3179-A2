@@ -109,6 +109,7 @@
     "legend": {
       "labelFontSize": 12,
       "titleFontSize": 14
-    }
+    },
+    "background": "#e3ecf8"
   }
 }

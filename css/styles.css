@@ -14,15 +14,15 @@ body {
   }
 
   body {
-    background-color: #e0eaf0; /* Pale light yellow */
+    background-color: #e3ecf8; /* Pale light yellow */
   }
   
   .vis-container, .chart-container, .chart-container-2 {
-    background-color: #e0eaf0; /* Match the background color */
+    background-color: #e3ecf8; /* Match the background color */
   }
   
   .text-container, .text-container-2 {
-    background-color: #e0eaf0; /* Ensure text containers match as well */
+    background-color: #e3ecf8; /* Ensure text containers match as well */
     padding: 10px;
   }
   
@@ -30,7 +30,7 @@ body {
 
 .page {
     width: 1000px;
-    background-color: #e0eaf0;
+    background-color: #e3ecf8;
     margin: auto;
     padding: 50px;
     padding-top: 35px;

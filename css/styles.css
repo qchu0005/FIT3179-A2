@@ -13,9 +13,24 @@ body {
       width: 100%;
   }
 
+  body {
+    background-color: #e0eaf0; /* Pale light yellow */
+  }
+  
+  .vis-container, .chart-container, .chart-container-2 {
+    background-color: #e0eaf0; /* Match the background color */
+  }
+  
+  .text-container, .text-container-2 {
+    background-color: #e0eaf0; /* Ensure text containers match as well */
+    padding: 10px;
+  }
+  
+  
+
 .page {
     width: 1000px;
-    background-color: white;
+    background-color: #e0eaf0;
     margin: auto;
     padding: 50px;
     padding-top: 35px;
